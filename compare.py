@@ -2,11 +2,13 @@ import pandas as pd
 from sklearn.metrics import mean_squared_error
 
 def compare(y, predictions):
-	diff = abs(y - predictions)
-	test_df = pd.DataFrame(list(zip(y, predictions, diff.round())), columns = ["y", "predictions", "difference"])
+	error2 = abs(y - predictions) ** 2
+	diff_df = pd.DataFrame(list(zip(y, predictions, error2.round(3))), columns = ["y", "predictions", "error2"])
 
-	print(test_df)
+	# print(diff_df)
 
-	mse = mean_squared_error(y, predictions)
+	# diff_df.to_csv("tests/diff_RFR.csv")
+
+	mse = round(mean_squared_error(y, predictions), 3)
 
 	print(mse)
