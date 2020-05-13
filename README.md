@@ -1,36 +1,42 @@
 # 14-ML-challenge
-### **Assumptions:**
+## **Assumptions**
 1. The seller is looking for the highest Price.
 2. Price is determined by Weight.
 3. Weight is directly proportional to Mass.
-
 **Then, the seller is looking for a high fish mass.**
 
-### **Research:**
-1. Mass =  Density * Volume
-2. Air density ( p ) is constant = 1.225 Kg/m3
-3. Lmax = Max(Length1, Length2, Length3)
-3. Volume = Lmax * Height * Width
-4. The higher the Volume, the higher the Mass, the higher the Price.
+## **Raw Data Linearity**
+![](images/raw_linearity.png)
 
-### **Data Preparation:**
-1. Limit dataframe float values to 3 decimals
-2. Calculate columns Mass, Volume
-...
+## **Raw Data Distribution**
+![](images/raw_distribution.png)
 
-### **Target Variable:**
-1. y = "Weight
+## **Preprocess**
+### Removing Outliers
+1. Removing outliers by feature and species using ***IsolationForest***
+2. Replace outliers with mean by feature and specie
 
-### **Feature Selection:**
-1. Select relevant features based on correlation
--> pic
-3. X = "Height", "Width", "Lmax", "Mass" ???
+### Calculated Fields
+1. Lmax = Max(Length1, Length2, Length3)
+2. Volume = Lmax * Height * Width
+3. Mass =  Density * Volume
+4. Lavg = Avg(Length1, Length2, Length3)
 
-### **Model Selection:**
-1. Looking for lowest neg_mean_squared_error
-2. Looking for highest accuracy
-**Models Tested:**
-...
-**Models Selected:**
-...
+### Normalize
+1. Using ***QuantileTransformer*** to fit a normal distribution
+2. Using ***MaxMinScaler*** to adjust the data back to its original min and max range
 
+## **Final Data Linearity**
+![](images/linearity.png)
+
+## **Final Data Distribution  (i.e. raw Lenght2 v. final Lenght2)**
+![](images/distribution.png)
+
+## **Model Training**
+1. Train Size: ***76%***
+2. Test Size: ***33%***
+3. Model Accuracy: ***99.85%***
+4. Model Strategy: ***ExtraTreeRegressor***
+
+## **Prediction**
+1. mse: ***39.83***
