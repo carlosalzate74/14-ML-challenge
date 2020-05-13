@@ -29,7 +29,7 @@
 ## **Final Data Linearity**
 ![](images/linearity.png)
 
-## **Final Data Distribution  (i.e. raw Lenght2 v. final Lenght2)**
+## **Final Data Distribution  (Raw v. Final)**
 ![](images/distribution.png)
 
 ## **Model Training**
@@ -40,3 +40,5 @@
 
 ## **Prediction**
 1. mse: ***39.83***
+
+![](images/predictions.png)
