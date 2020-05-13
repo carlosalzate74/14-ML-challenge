@@ -1,20 +1,40 @@
 import pandas as pd
-from sklearn import linear_model
-from sklearn.ensemble import RandomForestRegressor
+import numpy as np
 from joblib import dump
 from preprocess import prep_data
+from compare import compare
+
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import ExtraTreesRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import cross_validate
+
 
 df = pd.read_csv("fish_participant.csv")
 
 X, y = prep_data(df)
 
-# model = linear_model.LinearRegression() # 5559 - 0.036
-# model = linear_model.Lasso(alpha=0.1) # 5561 - 0.071
-# model = linear_model.Ridge(alpha=0.1, fit_intercept=False) # 5457 - 0.047
-# model = linear_model.OrthogonalMatchingPursuit(n_nonzero_coefs=4) # 5104 - 0.036
+# Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
-model = RandomForestRegressor(criterion="mse") #580 - 0.003
+# Train
+model = ExtraTreesRegressor(n_estimators=150, criterion="mse")
+model.fit(X_train, y_train)
 
-model.fit(X, y)
+# Predict
+y_pred = model.predict(X_test)
+
+# compare(y_test, y_pred)
+
+# Accuracy
+acc = model.score(X_test, y_test)
+print("acc: %.2f%%" % (acc*100.0))
+
+# mse = mean_squared_error(y_test, y_pred)
+# print("mse: %.2f" % mse)
 
 dump(model, "reg.joblib")
+
+
+
+

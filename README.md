@@ -13,15 +13,24 @@
 3. Volume = Lmax * Height * Width
 4. The higher the Volume, the higher the Mass, the higher the Price.
 
-**Our formula to predict will be:**
+### **Data Preparation:**
+1. Limit dataframe float values to 3 decimals
+2. Calculate columns Mass, Volume
+...
 
-Mass = p * Volume
+### **Target Variable:**
+1. y = "Weight
 
-**Our Matrix (X) and Target (y) will be:**
+### **Feature Selection:**
+1. Select relevant features based on correlation
+-> pic
+3. X = "Height", "Width", "Lmax", "Mass" ???
 
-X = "Height", "Width", "Lmax", "Mass"
-
-y = "Weight"
-
-
+### **Model Selection:**
+1. Looking for lowest neg_mean_squared_error
+2. Looking for highest accuracy
+**Models Tested:**
+...
+**Models Selected:**
+...
 

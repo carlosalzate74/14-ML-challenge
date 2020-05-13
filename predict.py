@@ -13,15 +13,16 @@ def predict_from_csv(path_to_csv):
 
     predictions = reg.predict(X)
 
-    # compare(y, predictions)
-
     return predictions
+
 
 if __name__ == "__main__":
     predictions = predict_from_csv("fish_holdout_demo.csv")
-    print(predictions)
 
-    ho_predictions = predict_from_csv("fish_holdout_demo.csv")
     ho_truth = pd.read_csv("fish_holdout_demo.csv")["Weight"].values
-    ho_mse = mean_squared_error(ho_truth, ho_predictions)
-    print(ho_mse)
+    
+    # Displays preedictions
+    compare(ho_truth, predictions)
+
+    ho_mse = mean_squared_error(ho_truth, predictions)
+    print("\nmse: %.2f" % ho_mse)
