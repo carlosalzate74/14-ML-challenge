@@ -29,8 +29,8 @@ y_pred = model.predict(X_test)
 acc = model.score(X_test, y_test)
 print("acc: %.2f%%" % (acc*100.0))
 
-mse = mean_squared_error(y_test, y_pred)
-print("mse: %.2f" % mse)
+# mse = mean_squared_error(y_test, y_pred)
+# print("mse: %.2f" % mse)
 
 dump(model, "reg.joblib")
 
