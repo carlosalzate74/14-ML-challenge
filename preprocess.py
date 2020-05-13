@@ -81,8 +81,6 @@ def normalize(df, features):
 		df = df[df.columns.drop(list(df.filter(regex='_QT')))]
 	return df
 
-
-
 def prep_data(df):
 
 	df = remove_outliers(df)
@@ -115,3 +113,4 @@ def prep_data(df):
 	X = X[['Weight', 'Length1', 'Length2', 'Length3', 'Width', 'Width_ro']]
 
 	return X, y
+

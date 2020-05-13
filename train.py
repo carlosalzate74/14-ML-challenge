@@ -7,7 +7,6 @@ from compare import compare
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import ExtraTreesRegressor
 from sklearn.metrics import mean_squared_error
-from sklearn.model_selection import cross_validate
 
 
 df = pd.read_csv("fish_participant.csv")
@@ -30,8 +29,8 @@ y_pred = model.predict(X_test)
 acc = model.score(X_test, y_test)
 print("acc: %.2f%%" % (acc*100.0))
 
-# mse = mean_squared_error(y_test, y_pred)
-# print("mse: %.2f" % mse)
+mse = mean_squared_error(y_test, y_pred)
+print("mse: %.2f" % mse)
 
 dump(model, "reg.joblib")
 
