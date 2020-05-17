@@ -32,6 +32,10 @@
 ## **Final Data Distribution  (Raw v. Final)**
 ![](images/distribution.png)
 
+### Feature Selection
+1. Calculate feature correlation v. Weight
+2. Selected features with correlation greater then 74%
+
 ## **Model Training**
 1. Train Size: ***76%***
 2. Test Size: ***33%***
